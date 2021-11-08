@@ -24,16 +24,17 @@ public class UserXMLSerialize {
             User user = new User("myId", "myPwd", "I", "AM");
 
             System.out.println("Ready to export a user");
-            FileOutputStream xmlos = new FileOutputStream("user.xml");
-            XMLEncoder encoder = new XMLEncoder(xmlos);
-            encoder.writeObject(user);
-            encoder.close();
+            FileOutputStream xmlos = new FileOutputStream("user.xml"); // we want to serialize to a file
+            XMLEncoder encoder = new XMLEncoder(xmlos); // using an xml encoder
+            encoder.writeObject(user); // encode the user object to xml (serialize)
+            encoder.close(); // cleanpup
             System.out.println("Done exporting a user as xml to user.xml");
 
+            // go the reverse way
             System.out.println("Importing a user as xml from user.xml");
-            FileInputStream inFileStream = new FileInputStream("user.xml");
-            XMLDecoder decoder = new XMLDecoder(inFileStream);
-            User newUser = (User)decoder.readObject();
+            FileInputStream inFileStream = new FileInputStream("user.xml"); // import the file
+            XMLDecoder decoder = new XMLDecoder(inFileStream); // decode the xml file
+            User newUser = (User)decoder.readObject(); // deserialize
             System.out.println("Read user: "+ newUser.getFirst()+" "
                                +newUser.getLast());
             decoder.close();
