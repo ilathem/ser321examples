@@ -20,18 +20,21 @@ public class GroupFileSerialize {
   public static void main (String args[]) {
 
     try {
+      // create a group
       Group admin = new GroupImpl("Administration");
       admin.addUserToGroup("Tim","any");
       admin.addUserToGroup("Joe","hisWord");
       admin.addUserToGroup("Sue","herWord");
 
+      // save to file as defined in group implemenation (save all users to file)
       admin.saveToFile();
       
+      // we could use a socket output stream instead of a file output stream
       System.out.println("Server ready and waiting to export a group");
 
+      // read in what we just outputted
       File outFile = new File("admin.ser");
-      ObjectOutputStream os = 
-                         new ObjectOutputStream(new FileOutputStream(outFile));
+      ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(outFile));
       os.writeObject(admin);
       os.flush();
       os.close(); //no need in Java to close the File outFiel (not a closeable object).

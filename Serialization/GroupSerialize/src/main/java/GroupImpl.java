@@ -29,11 +29,11 @@ public class GroupImpl implements Group, Serializable {
 
    public void saveToFile(){
       try{
-         File outFile = new File("users.ser");
-         ObjectOutputStream os =
+         File outFile = new File("users.ser"); // create output file
+         ObjectOutputStream os = // create output stream for that file
             new ObjectOutputStream(new FileOutputStream(outFile));
-         os.writeObject(users);
-         os.flush();
+         os.writeObject(users); // write the users object to the file
+         os.flush(); // cleanup
          os.close();
          System.out.println("users serialized to users.ser");
       }catch(Exception ex){
@@ -45,6 +45,7 @@ public class GroupImpl implements Group, Serializable {
       return name;
    }
 
+   // not serialization
    public void addUserToGroup(String id, String pwd) {
       boolean found = false;
       for (int i = 0; i<users.size(); i++) {

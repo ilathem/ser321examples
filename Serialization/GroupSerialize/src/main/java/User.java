@@ -12,7 +12,8 @@ import java.io.Serializable;
  * @date    January, 2020
  
  */
-class User implements Serializable {
+class User implements Serializable { // is serializable because a group has users
+  // doesn't include the json part because this uses java's built in serialization
 
   private String userId, userPwd;
 
