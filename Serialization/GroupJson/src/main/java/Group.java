@@ -17,7 +17,7 @@ import java.io.Serializable;
  * @file    Group.java
  * @date    January, 2020
  */
-public class Group extends Object implements JSONString, Serializable {
+public class Group implements JSONString, Serializable {
 
    // Serial version UID is defined below. Its only needed if you want
    // to make changes to the class and still deserialize artifacts
@@ -46,8 +46,8 @@ public class Group extends Object implements JSONString, Serializable {
          users = new Vector<User>();
          for (int i=0; i< names.length; i++){
             if(!names[i].equals("name")){
-               User aUser = new User((JSONObject)obj.getJSONObject(names[i]));
-               users.add(aUser);
+               User aUser = new User((JSONObject)obj.getJSONObject(names[i])); // create a new user
+               users.add(aUser); // add the user to the vector
             }
          }
          in.close();

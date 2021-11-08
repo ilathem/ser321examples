@@ -11,28 +11,28 @@ import org.json.JSONObject;
  * @file    User.java
  * @date    January, 2020
  */
-class User extends Object implements Serializable {
+class User implements Serializable {
 
    // Serial version UID is defined below. Its only needed if you want
    // to make changes to the class and still deserialize artifacts
    // generated from prior versions. Obtain this definition with:
    // serialver -classpath classes:lib/json.jar ser321.serialize.User
-   private static final long serialVersionUID = 3415902006212375222L;
+   private static final long serialVersionUID = 3415902006212375222L; // for backwards compatibility
 
-   private String userId, userPwd;
+   private String userId, userPwd; // attributes
 
-   public User(String id, String pwd) {
+   public User(String id, String pwd) { // parameterized constructor using primitives
 
       userId = id;
       userPwd = pwd;
    }
 
-   public User(JSONObject obj){
+   public User(JSONObject obj){ // parameterized constructor using json object
       userId = obj.getString("userId");
       userPwd = obj.getString("userPwd");
    }
 
-   public JSONObject toJSONObject(){
+   public JSONObject toJSONObject(){ // put user into json object format
       JSONObject obj = new JSONObject();
       obj.put("userId",userId);
       obj.put("userPwd",userPwd);

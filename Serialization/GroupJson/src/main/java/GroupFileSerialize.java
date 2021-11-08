@@ -42,13 +42,13 @@ public class GroupFileSerialize {
 
       // now use java's built in serialization to serialize and deserialize
       File outFile = new File("admin.ser");
-      ObjectOutputStream os = 
-                         new ObjectOutputStream(new FileOutputStream(outFile));
-      os.writeObject(admin);
+      ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(outFile));
+      os.writeObject(admin); // write the admin group into the output stream, this is automatically done by java
       os.flush();
       System.out.println("Used Java serialization of the group to admin.ser");
       os.close();
 
+      // use java's built in serialization to deserialize
       File inFile = new File("admin.ser");
       ObjectInputStream in =
                             new ObjectInputStream(new FileInputStream(inFile));
